@@ -1,5 +1,5 @@
 name: Build and Deploy
-run-name: Trigger by ${{github.actor}} in branch ${{github.ref_name}}
+run-name: Trigger by ${{github.actor}} - ${{github.run_number}}
 
 on:
   push:
