@@ -46,4 +46,4 @@ The purpose of this project is to gain hands-on experience with foundational Dev
 ---
 
 ## 🗺️ Architecture Diagram
-<img src="Architecture-Diagram.png" alt="Architecture Diagram" width="600"/>
+<img align="center" src="Architecture-Diagram.png" alt="Architecture Diagram" height="200" width="1000"/>
