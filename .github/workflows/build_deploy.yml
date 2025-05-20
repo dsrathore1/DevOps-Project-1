@@ -36,6 +36,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
+            echo "${{ secrets.DOCKER_PWD }}" | docker login -u "${{ secrets.DOCKER_UNAME }}" --password-stdin           
             docker pull ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
             docker stop app || true
             docker rm app || true
