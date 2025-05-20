@@ -40,4 +40,4 @@ jobs:
             docker pull ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
             docker stop app || true
             docker rm app || true
-            docker run -d -p 8000:8000 --name app ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
+            docker run -d -p 80:8000 --name app ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
