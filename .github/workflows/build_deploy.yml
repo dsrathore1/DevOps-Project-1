@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  Build-and-Push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -25,8 +25,8 @@ jobs:
       - name: Push Image
         run: docker push ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
 
-  deploy:
-    needs: build-and-push
+  Deploy:
+    needs: Build-and-Push
     runs-on: ubuntu-latest
     steps:
       - name: SSH and Deploy
