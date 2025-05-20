@@ -28,7 +28,6 @@ The purpose of this project is to gain hands-on experience with foundational Dev
 | **GitHub Actions** | CI/CD automation pipeline |
 | **AWS EC2**   | Hosting the deployed container    |
 | **Docker Hub**| Docker image registry             |
-| **NGINX** (Optional) | Reverse proxy setup        |
 
 ---
 
@@ -47,5 +46,4 @@ The purpose of this project is to gain hands-on experience with foundational Dev
 ---
 
 ## 🗺️ Architecture Diagram
-
-
+<img src="Architecture-Diagram.png" alt="Architecture Diagram" width="600"/>
