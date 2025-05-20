@@ -41,4 +41,4 @@ jobs:
             docker stop app
             docker rm app
             docker rmi ${{secrets.DOCKER_UNAME}}/devops-app-1:latest
-            docker run -d -p 80:8000 --name app ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
+            docker run -d -p 3.7.47.188:80:8000 --name app ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
