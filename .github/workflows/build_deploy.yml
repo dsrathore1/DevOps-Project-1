@@ -1,0 +1,42 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_UNAME }}
+          password: ${{ secrets.DOCKER_PWD }}
+
+      - name: Build Docker Image
+        run: docker build -t ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest .
+
+      - name: Push Image
+        run: docker push ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH and Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
+            docker stop app || true
+            docker rm app || true
+            docker run -d -p 8000:8000 --name app ${{ secrets.DOCKER_UNAME }}/devops-app-1:latest
