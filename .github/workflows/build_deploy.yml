@@ -36,11 +36,11 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            sudo apt update
-            sudo apt install docker.io -y
+            sudo apt update || true
+            sudo apt install docker.io -y || true
             sudo groupadd docker || true
-            sudo usermod -aG docker ${{secrets.EC2_USER}}
-            sudo systemctl restart docker
+            sudo usermod -aG docker ${{secrets.EC2_USER}} || true
+            sudo systemctl restart docker || true
 
       - name: SSH and Deploy
         uses: appleboy/ssh-action@v1.2.2
