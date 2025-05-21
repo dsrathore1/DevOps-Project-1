@@ -29,18 +29,18 @@ jobs:
     needs: Build-and-Push
     runs-on: ubuntu-latest
     steps:
-      - name: Install docker into EC2
+      - name: Install Docker
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            sudo apt update || true
-            sudo apt install docker.io -y || true
+            sudo apt update
+            sudo apt install docker.io -y
             sudo groupadd docker || true
             sudo usermod -aG docker ${{secrets.EC2_USER}} || true
-            sudo systemctl restart docker || true
+            sudo systemctl restart docker
 
       - name: SSH and Deploy
         uses: appleboy/ssh-action@v1.2.2
